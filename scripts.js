@@ -16,16 +16,17 @@ request.onload = function () {
   // Begin accessing JSON data here
   var data = JSON.parse(this.response);
   if (request.status >= 200 && request.status < 400) {
-    data.forEach(movie => {
+    data.forEach(data => {
       const card = document.createElement('div');
       card.setAttribute('class', 'card');
 
       const h1 = document.createElement('h1');
-      h1.textContent = movie.title;
+      h1.textContent = data.regional.loc;
 
       const p = document.createElement('p');
-      movie.description = movie.description.substring(0, 300);
-      p.textContent = `${movie.description}...`;
+      p.textContent = data.regional.confirmedCasesIndian;
+      const p1 = document.createElement('p');
+      p1.textContent = data.regional.discharged;
 
       container.appendChild(card);
       card.appendChild(h1);
